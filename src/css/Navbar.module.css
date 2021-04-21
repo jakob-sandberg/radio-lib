@@ -1,0 +1,17 @@
+.navbar {
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.link {
+  color: yellow;
+  font-size: 1.5rem;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: lightgray;
+}
