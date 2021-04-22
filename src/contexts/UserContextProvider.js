@@ -5,13 +5,8 @@ export const UserContext = createContext();
 const UserContextProvider = (props) => {
 
   const [loginState, setLoginState] = useState(false);
-  const [users, setUsers] = useState([
-    {
-        email: "jagge@gmail.com",
-        password: "1234"
-    }
-])
-const [currentUser, setCurrentUser] = useState({});
+  const [users, setUsers] = useState();
+  const [currentUser, setCurrentUser] = useState({});
 
 const values =
     {

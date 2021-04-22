@@ -6,7 +6,7 @@ const db = new sqlite3.Database(path.join(__dirname, "../radioLibDB.db"));
 
 // Route handles goes underneath here...
 const whoami = (req,res) => {
-  res.json(req.session.user || null);
+  res.json(req.session.user || "No user logged in");
 }
 
 const login = (req, res) => {
