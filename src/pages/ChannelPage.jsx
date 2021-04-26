@@ -15,8 +15,7 @@ const ChannelPage = (props) => {
       return  programs.map((program) => (
         <div 
         className={styles.program}
-        key={program.id}
-        >
+        key={program.id}>
           <p>{program.name}</p>
         </div>
       ));
@@ -35,9 +34,8 @@ const ChannelPage = (props) => {
 
   return  (
     <div className={styles.channelPage}>
-      <div>{renderChannel()}</div>
-    <div>{renderPrograms()}</div>
-   
+      {renderChannel()}
+      <p>  {renderPrograms()}</p>
     </div>
   );
 };

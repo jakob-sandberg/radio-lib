@@ -28,7 +28,7 @@ const HomePage = (props) => {
       onClick={() => goToCategory(category)}
       className={styles.categories}
       key={category.id}>
-      <p className={styles.title}>{category.name} {category.id}</p>
+      <p className={styles.title}>{category.name}</p>
       </div>
     )) 
   };
