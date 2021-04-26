@@ -1,16 +1,30 @@
 body {
-  background-color: navajowhite;
   justify-content: center;
+}
+
+.loginContainer {
+  margin: 3rem auto;
+  width: 33%;
+  display: grid;
+  background-color: bisque;
+}
+
+p {
+  margin: 1rem auto;
 }
 
 h1 {
   margin: 2rem auto;
 }
 
+
 .formContainer {
-  width: 15rem;
   display: grid;
-  background: whitesmoke;
-  margin-left: 40%;
   justify-content: center;
+}
+
+.changeRegLog {
+  cursor: pointer;
+    text-align: center;
+    text-decoration: underline;
 }

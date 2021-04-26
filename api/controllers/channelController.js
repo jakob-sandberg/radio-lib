@@ -14,7 +14,7 @@ const getAllChannels = async (req, res) => {
   res.json(channels);
 
 };
-
+/* 
 const getChannelById = async (req, res) => {
   let channel = await fetch(
     `http://api.sr.se/api/v2/channels/${req.params.channelId}?${json}`
@@ -48,14 +48,29 @@ const getChannelSchedule = async (req, res) => {
   res.json(channelSchedule.schedule);
 
 };
+ */
+
+const getAllProgramCategories = async (req, res) => {
+  let categories = await fetch(
+    `http://api.sr.se/api/v2/programcategories?${json}&${paginationFalse}`
+  );
+  categories = await categories.json();
+  res.json(categories);
+};
+
+const getProgramByChannelId = async (req, res) => {
+  let programs = await fetch (`http://api.sr.se/api/v2/programs/index?${req.params.channelId}&${json}`);
+  programs = await programs.json();
+  res.json(programs);
+}
 
 
 module.exports = {
 
   getAllChannels,
-
-  getChannelById,
-
-  getChannelSchedule,
+ /*  getChannelById,
+  getChannelSchedule, */
+  getAllProgramCategories,
+  getProgramByChannelId
 
 };

@@ -2,11 +2,11 @@ import { useState, useContext } from "react"
 import { useHistory } from "react-router-dom"
 import { Container, Form, Button, Col, Row } from "react-bootstrap"
 import styles from "../css/LoginPage.module.css";
-//import { UserContext } from "../contexts/userContext";
+import { UserContext } from "../contexts/UserContextProvider";
 
 
 export default function Login() {
-  /* const history = useHistory()
+  const history = useHistory()
   const { users, setLoginState, setCurrentUser } = useContext(UserContext);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
@@ -31,20 +31,20 @@ export default function Login() {
             history.push("/");
         } 
     }) 
-}*/
+}
 
 
   return (
     <div className={styles.formContainer}>
       <h1 className="text-center">Login</h1>
-      <form /* onSubmit={} */ >
+      <form  onSubmit={login}  >
 
         <Form.Group as={Row} controlId="formHorizontalEmail">
           <Form.Label column sm={2}>
             Email
     </Form.Label>
           <Col sm={10}>
-            <Form.Control /* onChange={} */ type="email" placeholder="Email" />
+            <Form.Control onChange={handleUsernameChange}  type="email" placeholder="Email" />
           </Col>
         </Form.Group>
 
@@ -53,7 +53,7 @@ export default function Login() {
             Password
     </Form.Label>
           <Col sm={10}>
-            <Form.Control /* onChange={handlePasswordChange}*/ type="password" placeholder="Password" />
+            <Form.Control onChange={handlePasswordChange} type="password" placeholder="Password" />
           </Col>
         </Form.Group>
 

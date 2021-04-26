@@ -27,8 +27,6 @@ app.use(
 app.use("/api/v1/channels", channelRoutes);
 app.use("/api/v1/users", userRoutes);
 
-// Serve static files, makes the frontend files "available" to the backend
-app.use(express.static(path.join(__dirname, "../build")));
 
 // Starts the server
 app.listen(port, (err) => {

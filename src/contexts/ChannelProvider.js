@@ -3,14 +3,16 @@ import { createContext, useState, useEffect } from "react";
 export const ChannelContext = createContext();
 
 const ChannelContextProvider = (props) => {
+  const [programCategories, setProgramCategories] = useState(null);
   const [channels, setChannels] = useState(null);
-  const [ channelSchedule, setChannelSchedule ] = useState(null);
-  const [channel, setChannel] = useState(null);
+  const [programs, setPrograms] = useState(null);
 
   useEffect(() => {
     getAllChannels();
-    getChannelSchedule();
+    getAllProgramCategories();
+    getProgramByChannelId();
   }, []);
+  
 
   const getAllChannels = async () => {
     let channels = await fetch ("/api/v1/channels");
@@ -19,30 +21,28 @@ const ChannelContextProvider = (props) => {
     setChannels(channels.channels);
   };
 
-  const getChannelSchedule = async () => {
-    let channelSchedule = await fetch ("/schedule/:channelId");
-    channelSchedule = await channelSchedule.json();
-    console.log("schedule", channelSchedule)
-    setChannelSchedule(channelSchedule.schedule)
+  const getAllProgramCategories = async () => {
+    let programCategories = await fetch ("/api/v1/channels/programcategories")
+    programCategories = await programCategories.json();
+    console.log("Categories", programCategories);
+    setProgramCategories(programCategories.programCategories)
   }
 
-  const getChannelById = async () => {
-    let channel = await fetch ("/api/v1/channels/:channelId");
-    channel = await channels.json();
-    console.log("Channel", channel);
-    setChannel(channels.channel)
+  const getProgramByChannelId = async () => {
+    let programs = await fetch (`/api/v1/programs/`);
+    programs = await programs.json();
+    console.log("programs: ", programs);
+    setPrograms(programs.programs)
 
   }
-
-
 
 
 const values = {
   channels,
-  channelSchedule,
-  getChannelById
-
+  programCategories,
+  getProgramByChannelId
 };
+
 return (
   <ChannelContext.Provider value={values}>
     {props.children}

@@ -1,0 +1,43 @@
+import styles from "../css/ChannelPage.module.css";
+import { useContext, useEffect } from "react";
+import { useLocation } from "react-router";
+import { ChannelContext } from "../contexts/ChannelProvider"
+
+const ChannelPage = (props) => {
+    const location = useLocation();
+    const { programs } = useContext(ChannelContext);
+
+    useEffect(() => {
+    }, [location]);
+
+
+    const renderPrograms = (props) => {
+      return (
+        <div>
+          <p>Programs</p>
+        </div>
+      );
+    }; 
+
+
+    const renderChannel = (props) => {
+      return (
+        <div className={styles.channelPage}>
+          <div className={styles.container}>
+          <h2>Välkommen till {location.state.channel.name}</h2>
+          <p>{location.state.channel.tagline}</p>
+          </div>
+         </div>
+      )
+    };
+
+  return  (
+    <div className={styles.channelPage}>
+      <div>{renderChannel()}</div>
+    <div>{renderPrograms()}</div>
+   
+    </div>
+  );
+};
+
+export default ChannelPage;

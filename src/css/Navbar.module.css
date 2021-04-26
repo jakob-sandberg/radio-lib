@@ -1,4 +1,4 @@
-.navbar {
+navbar {
   background: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
@@ -14,4 +14,13 @@
 
 .link:hover {
   color: lightgray;
+}
+
+.logSatus {
+  font-size: 2rem;
+}
+
+.span{
+  text-decoration:none;
+  color:#000;
 }

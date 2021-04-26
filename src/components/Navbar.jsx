@@ -1,20 +1,21 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContextProvider";
 import styles from "../css/Navbar.module.css";
+import LoginButton from "../components/LoginButton"
+import LogOutButton from "../components/LogOutButton"
+import { NavLink } from "react-router-dom"
 
 const Navbar = () => {
-  const [links, /* setLinks */] = useState([{ name: "Home", url: "/" }, {name: "Log In", url:"/log-in"}, {name: "Schedule", url:"/schedule"}]);
 
-  const renderLinks = () => {
-    return links.map((link) => (
-      <Link className={styles.link} key={link.name} to={link.url}>
-        {link.name}
-      </Link>
-    ));
-  };
+  const { loginState } = useContext(UserContext);
 
-  return <nav className={styles.navbar}>{renderLinks()}</nav>;
+  return <navbar>
+    <NavLink className={styles.link} to="/">Home</NavLink>
+    <NavLink className={styles.link} to="/schedule">Schedule</NavLink>
+    <NavLink className={styles.link} to="/log-in">
+      {loginState ? <LogOutButton /> : <LoginButton />}
+    </NavLink>
+  </navbar>;
 };
 
 export default Navbar;

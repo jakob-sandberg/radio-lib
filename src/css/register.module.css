@@ -1,0 +1,42 @@
+/*Login.js and Register.js style*/
+.registerContainer {
+  display: grid;
+  margin: 1rem auto;
+}
+
+  form {
+    margin: 1rem auto;
+  }
+
+
+.errorBox {
+  display: none;
+}
+
+.errorBox.active {
+  display: block;
+}
+
+.errorBox.inactive {
+  display: none
+}
+
+.singInButton {
+  margin-top:2rem;
+  width: 25%;
+  border: none;
+}
+
+/* LoginPage.js style*/
+.containerStyle{
+  min-height: 80vh;
+}
+.toggleText{
+  cursor: pointer;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.toggleText:hover{
+  color:#FE7F50
+}
