@@ -5,20 +5,30 @@ import { useHistory } from "react-router";
 
 const HomePage = (props) => {
   const history = useHistory();
+  
   const goToChannel = ( channel ) => {
     history.push({
       pathname: "/channel/" + channel.id,
       state: { channel }
       });
   };
+
+  const goToCategory = (category) => {
+    history.push({
+      pathname: "/category/" + category.id,
+      state: { category }
+    })
+
+  }
   const { channels, programCategories }  = useContext(ChannelContext);
   
   const renderCategories = () => {
     return programCategories.map((category) => (
       <div 
-      className={styles.card}
+      onClick={() => goToCategory(category)}
+      className={styles.categories}
       key={category.id}>
-      <p className={styles.title}>{category}</p>
+      <p className={styles.title}>{category.name} {category.id}</p>
       </div>
     )) 
   };

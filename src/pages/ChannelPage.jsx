@@ -12,14 +12,16 @@ const ChannelPage = (props) => {
 
 
     const renderPrograms = (props) => {
-      return (
-        <div>
-          <p>Programs</p>
+      return  programs.map((program) => (
+        <div 
+        className={styles.program}
+        key={program.id}
+        >
+          <p>{program.name}</p>
         </div>
-      );
-    }; 
-
-
+      ));
+      }
+        
     const renderChannel = (props) => {
       return (
         <div className={styles.channelPage}>
