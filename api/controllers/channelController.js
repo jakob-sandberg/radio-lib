@@ -59,7 +59,7 @@ const getAllProgramCategories = async (req, res) => {
 };
 
 const getProgramByChannelId = async (req, res) => {
-  let programs = await fetch (`http://api.sr.se/api/v2/programs/index?${req.params.channelId}&${json}`);
+  let programs = await fetch (`http://api.sr.se/api/v2/programs/index?${req.params.channelId}&${json}&${paginationFalse}`);
   programs = await programs.json();
   res.json(programs);
 }

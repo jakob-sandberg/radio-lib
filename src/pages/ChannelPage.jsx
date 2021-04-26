@@ -35,7 +35,7 @@ const ChannelPage = (props) => {
   return  (
     <div className={styles.channelPage}>
       {renderChannel()}
-      <p>  {renderPrograms()}</p>
+      <p>{renderPrograms()}</p>
     </div>
   );
 };
