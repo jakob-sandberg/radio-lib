@@ -1,8 +1,13 @@
 body {
-  background: rgba(82, 80, 80, 0.555);
+  margin-top: -10px;
+  background-image: url("../assets/radio.jpg");
+  background-size: contain;
+  text-align: center;
+  padding: 10px;
 }
 .channelPage {
   display: grid;
+  color: white;
 }
 
 .container {
@@ -18,4 +23,18 @@ h2 {
 
 p {
   padding: 10px;
+}
+
+.program {
+  display: inline-block;
+  width: auto;
+  background: rgba(56, 54, 54, 0.808);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 2rem auto;
+  padding: 0.5rem;
+  transition: 0.3s;
+  margin: 5px;
 }

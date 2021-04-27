@@ -1,16 +1,57 @@
+
+
 .home {
-  background: black;
-  color: yellow;
+  margin-top: -10px;
+  background-image: url("../assets/radio.jpg");
+  background-size: contain;
   text-align: center;
+  padding: 10px;
+}
+
+h2 {
+  color: white;
 }
 
 .card {
-  width: 25rem;
-  background: white;
+  display: inline-block;
+  width: auto;
+  background: rgba(56, 54, 54, 0.808);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  color: black;
+  color: white;
+  font-size: 20px;
   cursor: pointer;
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 0.5rem;
   transition: 0.3s;
+  margin: 5px;
+}
+
+
+.card:hover {
+  background: red;
+}
+
+
+.CategoryCard {
+  width: auto;
+  display: inline-block;
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background: rgba(56, 54, 54, 0.808);
+  transition: 0.3s;
+  margin: 5px;
+}
+
+.CategoryCard:hover {
+  background-color: red;
+}
+
+
+.categoryTitle {
+  font-size: 1.2rem;
+}
+
+.categoryContainer  {
+  margin: 1rem auto;
+  width: 50%;
 }

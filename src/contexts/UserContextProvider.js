@@ -16,6 +16,10 @@ const UserContextProvider = (props) => {
     }
   ])
   const [currentUser, setCurrentUser] = useState({});
+  const [favorites, setFavorites] = useState({});
+  const [addedToFavorites, setAddedToFavorites] = useState({});
+
+
   const addToRegistration = (e, email, password) => {
     e.preventDefault()
     const member = {
@@ -39,6 +43,15 @@ const UserContextProvider = (props) => {
     }
   }
 
+  const addToFavorites = (program) => {
+    if (!program.starred) {
+      setFavorites([...favorites, program])
+      setAddedToFavorites(true)
+        return program
+      }
+    }
+  
+
   const values =
   {
     loginState,
@@ -51,13 +64,18 @@ const UserContextProvider = (props) => {
     isMember,
     setIsMember,
     toBeLogin,
-    setToBeLogin
+    setToBeLogin,
+    addToFavorites,
+    addedToFavorites,
+    setAddedToFavorites
   }
+
   return (
     <UserContext.Provider value={values}>
       {props.children}
     </UserContext.Provider>
   )
-}
+  }
+
 
 export default UserContextProvider

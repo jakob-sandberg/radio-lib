@@ -4,8 +4,8 @@ import Navbar from "./components/Navbar";
 import UserContextProvider from "./contexts/UserContextProvider";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
-import Schedule from "./pages/Schedule";
 import ChannelPage from "./pages/ChannelPage";
+import ProfilePage from "./pages/ProfilePage";
 
 const App = () => {
   return (
@@ -17,9 +17,8 @@ const App = () => {
           <Navbar />
           <Route exact path="/" component={HomePage} />
           <Route exact path="/log-in" component={LoginPage} />
-          <Route exact path="/schedule" component={Schedule} />
           <Route exact path="/channel/:channelId" component={ChannelPage} />
-          
+          <Route exact path="/profile-page" component={ProfilePage} />
           </ChannelContextProvider>
           </UserContextProvider>
         </BrowserRouter>

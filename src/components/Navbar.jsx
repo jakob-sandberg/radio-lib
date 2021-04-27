@@ -9,13 +9,16 @@ const Navbar = () => {
 
   const { loginState } = useContext(UserContext);
 
-  return <navbar>
+  return <div className={styles.navbar}>
     <NavLink className={styles.link} to="/">Home</NavLink>
-    <NavLink className={styles.link} to="/schedule">Schedule</NavLink>
+    {loginState ?
+    <NavLink className={styles.link} to="/profile-page">Profile Page</NavLink>
+    : ""}
     <NavLink className={styles.link} to="/log-in">
-      {loginState ? <LogOutButton /> : <LoginButton />}
+      {loginState ? 
+      <LogOutButton /> : <LoginButton />}
     </NavLink>
-  </navbar>;
+  </div>;
 };
 
 export default Navbar;

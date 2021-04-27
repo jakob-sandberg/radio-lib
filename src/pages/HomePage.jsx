@@ -25,10 +25,10 @@ const HomePage = (props) => {
   const renderCategories = () => {
     return programCategories.map((category) => (
       <div 
+      className={styles.CategoryCard}
       onClick={() => goToCategory(category)}
-      className={styles.categories}
       key={category.id}>
-      <p className={styles.title}>{category.name}</p>
+      <p className={styles.categoryTitle}>{category.name}</p>
       </div>
     )) 
   };
@@ -46,11 +46,11 @@ const HomePage = (props) => {
 
   return  (
     <div className={styles.home}>
-      <h1>Homepage</h1>
-      <h2>Våra Kanaler</h2>
-      <p>Categories</p>
+      <div className={styles.categoryContainer}>
+      <h2>Våra Kategorier</h2>
       {programCategories && renderCategories()}
-      <p>Channels</p>
+      </div>
+      <h2>Alla Kanaler</h2>
       {channels && renderChannels()}
       
     </div>
@@ -58,3 +58,4 @@ const HomePage = (props) => {
 };
 
 export default HomePage;
+

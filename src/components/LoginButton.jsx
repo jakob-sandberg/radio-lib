@@ -7,6 +7,6 @@ export default function LoginButton() {
         setToBeLogin(true)
     }
     return (
-        <p onClick={handleOnclick}>Login</p>
+        <span onClick={handleOnclick}>Login</span>
     )
 }
