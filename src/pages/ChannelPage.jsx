@@ -8,12 +8,12 @@ import { AiOutlineStar } from 'react-icons/ai';
 
 const ChannelPage = (props) => {
     const location = useLocation();
-    const { programs } = useContext(ChannelContext);
+    const { programs, setActiveChannel } = useContext(ChannelContext);
     const { addTofavorites } = useContext(UserContext);
 
     useEffect(() => {
+      setActiveChannel(location.state.channel.id);
     }, [location]);
-
 
     const handleClick = (e) => {
       e.stopPropagation()
