@@ -69,7 +69,6 @@ const getProgramsByCategoryId = async (req, res) => {
   let categoryPrograms = await fetch (`http://api.sr.se/api/v2/programs/index?programcategoryid=${req.params.id}&${json}&${paginationFalse}`);
   categoryPrograms = await categoryPrograms.json();
   res.json(categoryPrograms);
-  console.log("req", req.params.id);
 }
 
 

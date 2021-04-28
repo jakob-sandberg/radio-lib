@@ -6,17 +6,25 @@ import { ChannelContext } from "../contexts/ChannelProvider"
 
 const CategoryPage = (props) => {
     const location = useLocation();
-    const { setActiveCategory } = useContext(ChannelContext);
+    const { categoryPrograms, setActiveCategory } = useContext(ChannelContext);
 
     useEffect(() => {
       setActiveCategory(location.state.category.id); 
        console.log(location.state.category.id);
     }, [location]);
 
-  
 
-   
-
+    const renderCategoryPrograms = (props) => {
+      return  categoryPrograms.map((categoryProgram) => (
+        <div 
+        className={styles.program}
+        onClick
+        key={categoryProgram.id}>
+          <p>{categoryProgram.name}</p>   
+          <p>{categoryProgram.id}</p> 
+        </div>
+      ));
+      }
 
       const renderCategory = () => {
         return (
@@ -31,6 +39,7 @@ const CategoryPage = (props) => {
   return  (
     <div className={styles.channelPage}>
       {renderCategory()}
+      {renderCategoryPrograms()}
      
     </div>
   );

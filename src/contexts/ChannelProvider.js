@@ -44,7 +44,7 @@ const ChannelContextProvider = (props) => {
   const getProgramByChannelId = async () => {
     let programs = await fetch (`/api/v1/channels/programs/` + selectedChannel);
     programs = await programs.json();
-    console.log("programs : ", programs);
+    console.log("programs: ", programs);
     setPrograms(programs.programs)
   }
 
@@ -57,7 +57,7 @@ const ChannelContextProvider = (props) => {
     let categoryPrograms = await fetch ("/api/v1/channels/category/" + selectedCategory);
     categoryPrograms = await categoryPrograms.json();
     console.log("categoryPrograms ", categoryPrograms);
-    setCategoryPrograms(categoryPrograms.categoryPrograms)
+    setCategoryPrograms(categoryPrograms.programs)
   }
 
   const setActiveCategory = (categoryId) => {
