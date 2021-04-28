@@ -1,0 +1,21 @@
+body {
+  margin-top: -10px;
+  background-image: url("../assets/radio.jpg");
+  background-size: cover;
+  text-align: center;
+  padding: 10px;
+}
+
+.program {
+  display: inline-block;
+  width: auto;
+  background: rgba(34, 32, 32, 0.808);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 2rem auto;
+  padding: 0.5rem;
+  transition: 0.3s;
+  margin: 5px;
+}

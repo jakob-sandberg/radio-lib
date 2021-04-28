@@ -1,4 +1,4 @@
-import styles from "../css/ChannelPage.module.css";
+import styles from "../css/CategoryPage.module.css";
 import { useContext, useEffect } from "react";
 import { useLocation } from "react-router";
 import { ChannelContext } from "../contexts/ChannelProvider"
@@ -8,24 +8,31 @@ const CategoryPage = (props) => {
     const location = useLocation();
     const { categoryPrograms, setActiveCategory } = useContext(ChannelContext);
 
+    
+
     useEffect(() => {
       setActiveCategory(location.state.category.id); 
        console.log(location.state.category.id);
     }, [location]);
 
+    const openInNewTab = (url) => {
+      const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+      if (newWindow) newWindow.opener = null
+    }
+    
 
     const renderCategoryPrograms = (props) => {
+  
       return  categoryPrograms.map((categoryProgram) => (
         <div 
+        onClick={() => openInNewTab(categoryProgram.programurl)}
         className={styles.program}
-        onClick
         key={categoryProgram.id}>
-          <p>{categoryProgram.name}</p>   
-          <p>{categoryProgram.id}</p> 
+          <p>{categoryProgram.name}</p> 
         </div>
+        
       ));
       }
-
       const renderCategory = () => {
         return (
           <div className={styles.channelPage}>
