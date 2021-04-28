@@ -1,8 +1,28 @@
-.ProfilePage {
+body{
+  background-image: url("../assets/radio.jpg");
+  background-size: cover;
+}
+
+.container {
+  width: 33%;
+  margin: 10rem auto;
+  background: rgba(169, 169, 169, 0.582);
   padding: 20px;
-  display: grid;
+  display: flex;
 }
 
 h1 {
   margin: 1rem auto;
+  color: white;
+}
+
+.favoritesList {
+  width: 50%;
+  background: burlywood;
+}
+
+.changeInfo {
+  margin-left: 10px;
+  width: 50%;
+  background: coral;
 }

@@ -7,6 +7,9 @@ const ChannelContextProvider = (props) => {
   const [channels, setChannels] = useState(null);
   const [ programs, setPrograms] = useState([]);
   const [selectedChannel, setSelectedChannel] = useState(null);
+  const [ categoryPrograms, setCategoryPrograms] = useState(null);
+  const [ selectedCategory, setSelectedCategory] = useState(null);
+
 
   useEffect(() => {
     getAllChannels();
@@ -14,9 +17,14 @@ const ChannelContextProvider = (props) => {
   }, []);
 
   useEffect(() => {
-    console.log("GET CHANNELS BY PROGRAM ID");
     getProgramByChannelId();
   }, [selectedChannel]);
+
+  useEffect(() => {
+    getProgramsByCategoryId();
+  }, [selectedCategory]);
+
+
   
 
   const getAllChannels = async () => {
@@ -36,7 +44,7 @@ const ChannelContextProvider = (props) => {
   const getProgramByChannelId = async () => {
     let programs = await fetch (`/api/v1/channels/programs/` + selectedChannel);
     programs = await programs.json();
-    console.log("programs: ", programs);
+    console.log("programs : ", programs);
     setPrograms(programs.programs)
   }
 
@@ -45,11 +53,29 @@ const ChannelContextProvider = (props) => {
   }
 
 
+  const getProgramsByCategoryId = async () => {
+    let categoryPrograms = await fetch ("/api/v1/channels/category/" + selectedCategory);
+    categoryPrograms = await categoryPrograms.json();
+    console.log("categoryPrograms ", categoryPrograms);
+    setCategoryPrograms(categoryPrograms.categoryPrograms)
+  }
+
+  const setActiveCategory = (categoryId) => {
+    setSelectedCategory(categoryId);
+  }
+
+
+
+
+
+
 const values = {
   channels,
   programCategories,
   programs,
-  setActiveChannel
+  setActiveChannel,
+  categoryPrograms,
+  setActiveCategory
 };
 
 return (

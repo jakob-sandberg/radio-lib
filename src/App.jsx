@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ChannelPage from "./pages/ChannelPage";
 import ProfilePage from "./pages/ProfilePage";
+import CategoryPage from "./pages/CategoryPage";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/log-in" component={LoginPage} />
           <Route exact path="/channel/:channelId" component={ChannelPage} />
+          <Route exact path="/category/:categoryId" component={CategoryPage} />
           <Route exact path="/profile-page" component={ProfilePage} />
           </ChannelContextProvider>
           </UserContextProvider>

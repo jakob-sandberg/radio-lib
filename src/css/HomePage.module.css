@@ -3,7 +3,7 @@
 .home {
   margin-top: -10px;
   background-image: url("../assets/radio.jpg");
-  background-size: contain;
+  background-size: cover;
   text-align: center;
   padding: 10px;
 }

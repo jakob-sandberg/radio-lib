@@ -13,7 +13,7 @@ const HomePage = (props) => {
       });
   };
 
-  const goToCategory = (category) => {
+  const goToCategory = ( category ) => {
     history.push({
       pathname: "/category/" + category.id,
       state: { category }

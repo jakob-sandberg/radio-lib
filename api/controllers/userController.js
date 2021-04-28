@@ -71,6 +71,55 @@ const register = (req, res) => {
 };
 
 
+const deleteUserById = async (req, res) => {
+  let user = await db.get(/*sql*/ ` SELECT * FROM users WHERE id = $id`, {
+    $id: req.params.id,
+  });
+  console.log("User: ", user);
+
+  if (!user) {
+    res
+      .status(400)
+      .send(`The user with id = ${req.params.id} does not exists`);
+    return;
+  }
+
+  let query = /*sql*/ `DELETE FROM users WHERE id = $id`;
+  let params = { $id: req.params.id };
+  let result = await db.run(query, params);
+  console.log("results: ", result);
+  res.send("Person has been deleted");
+};
+
+
+
+
+const editUserById = async (req, res) => {
+  let query = /*sql*/ `
+    UPDATE users SET ${Object.keys(req.body)
+      .map((k) => k + " = " + "$" + k)
+      .join(", ")}
+    WHERE id = $id`;
+
+  let params = { $id: req.params.id };
+  for (let key in req.body) {
+    params["$" + key] = req.body[key];
+  }
+  // console.log("params: ", params);
+
+  let result = await db.run(query, params);
+  // console.log("result: ", result);
+
+  query = /*sql*/ `SELECT * FROM users WHERE id = $id`;
+  params = { $id: req.params.id };
+  let user = await db.get(query, params);
+  res.json(user);
+};
+
+
+
+
+
 
 // Export the differents route handlers
-module.exports = { whoami, login, logOut, register };
+module.exports = { whoami, login, logOut, register, deleteUserById, editUserById };
