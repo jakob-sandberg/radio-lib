@@ -20,7 +20,6 @@ const ChannelPage = (props) => {
       addTofavorites(props.program)
     }
 
-
     const renderPrograms = (props) => {
       return  programs.map((program) => (
         <div 
