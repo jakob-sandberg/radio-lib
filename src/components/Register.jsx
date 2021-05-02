@@ -4,13 +4,14 @@ import { Alert, Container, Form, Button } from "react-bootstrap"
 import styles from "../css/register.module.css"
 
 const Register = () => {
-  const { addToRegistration, isMember, setIsMember } = useContext(UserContext)
+  const { register, isMember, setIsMember, setToBeLogin } = useContext(UserContext)
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("")
   const [isValid, setIsValid] = useState(false)
   const [inputDefault, setInputDefault] = useState(true)
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setIsMember(false)
@@ -46,15 +47,24 @@ const Register = () => {
     setConfirmPassword(e.target.value)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let userInfo = {
+      userName,
+      email,
+      password,
+    };
     if (isValid) {
-      addToRegistration(e,userName, email, password)
+      let result = await register(userInfo);
+      if (result.success) {
+        setToBeLogin(true);
+      } else {
+        setError(result.error);
+      }
+    } else {
+      console.log("not valid");
     }
-    else {
-      e.preventDefault();
-    }
-  }
-
+  };
   return (
     <div className={styles.registerContainer}>
       <h1 className="text-center">Become a Member</h1>
@@ -81,7 +91,7 @@ const Register = () => {
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Create a password</Form.Label>
           <br />
-          <Form.Control onChange={passwordChange} type="password" name="password" placeholder="Please enter more than 4 characters" minlength="4" required />
+          <Form.Control onChange={passwordChange} type="password" name="password" placeholder="Please enter more than 4 characters" minLength="4" required />
         </Form.Group>
 
 

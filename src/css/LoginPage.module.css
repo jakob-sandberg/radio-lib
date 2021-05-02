@@ -7,6 +7,7 @@ body {
   width: 33%;
   display: grid;
   background-color: bisque;
+  border-radius: 15px 50px;
 }
 
 p {

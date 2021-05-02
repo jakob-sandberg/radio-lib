@@ -1,56 +1,57 @@
-import { useState, useContext } from "react"
-import { useHistory } from "react-router-dom"
-import { Container, Form, Button, Col, Row } from "react-bootstrap"
-import styles from "../css/LoginPage.module.css";
+import { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { UserContext } from "../contexts/UserContextProvider";
+import styles from "../css/LoginPage.module.css";
+import { Container, Form, Button, Col, Row } from "react-bootstrap";
 
-
-export default function Login() {
-  const history = useHistory()
-  const { users, setLoginState, setCurrentUser } = useContext(UserContext);
+const Login = () => {
+  const { login } = useContext(UserContext); 
   const [email, setEmail] = useState("");
-  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const history = useHistory();
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value)
-  }
 
   const handleUsernameChange = (e) => {
-    setUserName(e.target.value)
-  }
+    setEmail(e.target.value);
+  };
+
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-  }
-
-  const login = (e) => {
+  };
+  const submitLogin = async (e) => {
     e.preventDefault();
-    users.map((user) => {
-      if ((user.email === email) && user.password === password && user.userName === userName) {
-        setLoginState(true)
-        setCurrentUser({
-          userName: user.userName,
-          email: user.email,
-          password: user.password
-        });
-        history.push("/");
-      }
-    })
-  }
+    let userInfo = {
+      email,
+      password,
+    };
+    
+    let result = await login(userInfo);
+    if (result.success) {
+      console.log(result.success);
+      history.push("/");
+    } else {
+      setError(result.error);
+    }
+  };
 
 
   return (
     <div className={styles.formContainer}>
       <h1 className="text-center">Login</h1>
-      <form onSubmit={login}  >
+      <form onSubmit={submitLogin}  >
 
-        <Form.Group as={Row} controlId="formHorizontalEmail">
+        <Form.Group as={Row} controlId="formHorizontalUsername">
           <Form.Label column sm={2}>
             Username
     </Form.Label>
           <Col sm={10}>
-            <Form.Control onChange={handleUsernameChange} type="username" placeholder="Username" />
+            <Form.Control onChange={handleUsernameChange} type="usernName" placeholder="Username" />
           </Col>
         </Form.Group>
 
@@ -85,3 +86,5 @@ export default function Login() {
     </div>
   )
 }
+
+export default Login;

@@ -1,66 +1,72 @@
-import { createContext, useState } from "react"
-import { useHistory } from 'react-router-dom'
+import { createContext, useState, } from "react"
 
 export const UserContext = createContext();
 
 const UserContextProvider = (props) => {
 
-  const history = useHistory();
+  const [user, setUser] = useState(null);
   const [isMember, setIsMember] = useState(false);
-  const [loginState, setLoginState] = useState(false);
+  const [showLogin, setShowLogin] =useState(true);
   const [toBeLogin, setToBeLogin] = useState(true);
-  const [currentUser, setCurrentUser] = useState({});
 
-
-  const [users, setUsers] = useState({});
-
-  const login = async () => {
-    let users = await fetch("/api/v1/users");
-    users = await users.json();
-    setUsers(users);
-  };
-
-
-  const addToRegistration = (e, userName, email, password) => {
-    e.preventDefault()
-    const member = {
-      userName,
-      email,
-      password,
-    }
-    let isAlreadyMember = false
-    for (let i = 0; i < users.length; i++) {
-      if (users[i].email === member.email) {
-        isAlreadyMember = true
-      }
-    }
-    if (!isAlreadyMember) {
-      setUsers([member, ...users])
-      setLoginState(true)
-      setCurrentUser(member);
-      history.push("/");
-    }
-    else {
-      setIsMember(true)
-    }
+  const getUser = async () =>{
+    let user = await fetch("/api/v1/users/whoami")
+    user = await user.json();
+    setUser(user)
+    return
   }
 
+  const login = async (userInfo)=>{
+      let result = await fetch("/api/v1/users/login",{
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userInfo),
+      });
+      result = await result.json();
+      console.log(result)
+      getUser()
+      return result
 
+  }
+   
+  const logout = async ()=>{
+    await fetch("/api/v1/users/logout")
+     getUser()
+  }
 
+  const register = async(newUser)=>{
+    let result = await fetch("/api/v1/users/register", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
+    result = await result.json();
+    getUser();
+    return result;
+  }
+
+  
+
+ 
   const values =
   {
-    loginState,
-    setLoginState,
-    users,
-    setUsers,
-    currentUser,
-    setCurrentUser,
-    addToRegistration,
-    isMember,
-    setIsMember,
-    toBeLogin,
+    setUser,
+    user,
+    getUser,
+    login,
+    logout,
+    register,
+    showLogin,
+    setShowLogin,
     setToBeLogin,
-    login
+    toBeLogin,
+    setIsMember
+    
+    
   }
 
   return (
@@ -68,7 +74,7 @@ const UserContextProvider = (props) => {
       {props.children}
     </UserContext.Provider>
   )
-  }
+}
 
 
 export default UserContextProvider

@@ -12,7 +12,7 @@ export default function LoginPage() {
   
   return (
     <div className={styles.loginContainer}>
-     {toBeLogin ? <Login /> : <Register />}
+     {toBeLogin ? <Login />: <Register />}
      <p className={styles.changeRegLog} onClick={changeRegLog}>{toBeLogin ? "Are you not a member yet?" : " Back to login"}</p>
     </div>
 )}

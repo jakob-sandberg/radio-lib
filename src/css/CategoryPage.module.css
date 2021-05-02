@@ -15,10 +15,11 @@ body {
   height: 5rem;
   background: rgba(56, 54, 54, 0.808);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px 50px;
   color: white;
   font-size: 15px;
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 1.5rem;
   transition: 0.3s;
   margin: 5px;
 }

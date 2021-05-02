@@ -8,7 +8,6 @@ router.get("/whoami", userController.whoami);
 router.post("/login", userController.login);
 router.get("/logOut", userController.logOut);
 router.post("/register", userController.register);
-router.put("/:id", userController.editUserById);
 router.delete("/:id", userController.deleteUserById);
 
 module.exports = router;
