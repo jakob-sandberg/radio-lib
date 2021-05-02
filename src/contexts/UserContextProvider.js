@@ -6,6 +6,7 @@ const UserContextProvider = (props) => {
 
   const [user, setUser] = useState(null);
   const [toBeLogin, setToBeLogin] = useState(true);
+  const [loginState, setLoginState] = useState(false);
 
   const getUser = async () =>{
     let user = await fetch("/api/v1/users/whoami")
@@ -23,7 +24,6 @@ const UserContextProvider = (props) => {
         body: JSON.stringify(userInfo),
       });
       result = await result.json();
-      console.log(result)
       getUser()
       return result
   }
@@ -59,7 +59,8 @@ const UserContextProvider = (props) => {
     register,
     setToBeLogin,
     toBeLogin,
-    
+    setLoginState,
+    loginState
     
   }
 

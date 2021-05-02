@@ -5,7 +5,7 @@ import styles from "../css/LoginPage.module.css";
 import { Container, Form, Button, Col, Row } from "react-bootstrap";
 
 const Login = () => {
-  const { login, setToBeLogin } = useContext(UserContext);
+  const { login, setLoginState } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
@@ -16,7 +16,6 @@ const Login = () => {
   const handleUsernameChange = (e) => {
     setUserName(e.target.value);
   };
-
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -35,17 +34,27 @@ const Login = () => {
 
     let result = await login(userInfo);
     if (result.success) {
-      setToBeLogin(true);
+      console.log("result.success: ", result.success);
       history.push("/");
     } else {
       setError(result.error);
+      console.log(result.error)
     }
   };
 
   return (
     <div className={styles.formContainer}>
       <h1 className="text-center">Login</h1>
-      <form onSubmit={submitLogin}  >
+      <form onSubmit={(e) => {
+        submitLogin(e);
+      }}  >
+
+        <p
+          className={`${styles.errorBox} ${error ? styles.active : styles.inactive
+            }`}
+        >
+          {error}
+        </p>
 
         <Form.Group as={Row} controlId="formHorizontalUsername">
           <Form.Label column sm={2}>

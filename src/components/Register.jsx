@@ -5,7 +5,7 @@ import { Alert, Container, Form, Button } from "react-bootstrap"
 import styles from "../css/register.module.css"
 
 const Register = () => {
-  const { register , setToBeLogin } = useContext(UserContext)
+  const { register , setLoginState} = useContext(UserContext)
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -55,7 +55,7 @@ const Register = () => {
     if (isValid) {
       let result = await register(userInfo);
       if (result.success) {
-        setToBeLogin(true);
+        setLoginState(true)
         history.push("/");
       } else {
         setError(result.error);

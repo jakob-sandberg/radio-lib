@@ -9,6 +9,7 @@ const ChannelContextProvider = (props) => {
   const [selectedChannel, setSelectedChannel] = useState(null);
   const [ categoryPrograms, setCategoryPrograms] = useState(null);
   const [ selectedCategory, setSelectedCategory] = useState(null);
+  const [schedule, setSchedule] = useState(null);
 
 
   useEffect(() => {
@@ -32,6 +33,14 @@ const ChannelContextProvider = (props) => {
     channels = await channels.json();
     console.log("Channels", channels)
     setChannels(channels.channels);
+  };
+
+  const getChannelSchedule = async (channelId, date) => {
+    let fetchedschedule = await fetch(
+      `/api/v1/channels/schedule/${channelId}?date=${date}`
+    );
+    fetchedschedule = await fetchedschedule.json();
+    setSchedule(fetchedschedule);
   };
 
   const getAllProgramCategories = async () => {
@@ -70,7 +79,9 @@ const values = {
   programs,
   setActiveChannel,
   categoryPrograms,
-  setActiveCategory
+  setActiveCategory,
+  schedule,
+  getChannelSchedule,
 };
 
 return (
