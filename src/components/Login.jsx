@@ -8,8 +8,13 @@ import { UserContext } from "../contexts/UserContextProvider";
 export default function Login() {
   const history = useHistory()
   const { users, setLoginState, setCurrentUser } = useContext(UserContext);
+  const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value)
+  }
 
   const handleUsernameChange = (e) => {
     setUserName(e.target.value)
@@ -22,31 +27,43 @@ export default function Login() {
   const login = (e) => {
     e.preventDefault();
     users.map((user) => {
-        if ((user.email === userName) && user.password === password) {
-            setLoginState(true)
-            setCurrentUser({
-                email: user.email,
-                password: user.password
-            });
-            history.push("/");
-        } 
-    }) 
-}
+      if ((user.email === email) && user.password === password && user.userName === userName) {
+        setLoginState(true)
+        setCurrentUser({
+          userName: user.userName,
+          email: user.email,
+          password: user.password
+        });
+        history.push("/");
+      }
+    })
+  }
 
 
   return (
     <div className={styles.formContainer}>
       <h1 className="text-center">Login</h1>
-      <form  onSubmit={login}  >
+      <form onSubmit={login}  >
+
+        <Form.Group as={Row} controlId="formHorizontalEmail">
+          <Form.Label column sm={2}>
+            Username
+    </Form.Label>
+          <Col sm={10}>
+            <Form.Control onChange={handleUsernameChange} type="username" placeholder="Username" />
+          </Col>
+        </Form.Group>
+
 
         <Form.Group as={Row} controlId="formHorizontalEmail">
           <Form.Label column sm={2}>
             Email
     </Form.Label>
           <Col sm={10}>
-            <Form.Control onChange={handleUsernameChange}  type="email" placeholder="Email" />
+            <Form.Control onChange={handleEmailChange} type="email" placeholder="Email" />
           </Col>
         </Form.Group>
+
 
         <Form.Group as={Row} controlId="formHorizontalPassword">
           <Form.Label column sm={2}>
@@ -67,4 +84,4 @@ export default function Login() {
 
     </div>
   )
-} 
+}

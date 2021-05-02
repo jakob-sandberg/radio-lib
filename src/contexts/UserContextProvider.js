@@ -9,22 +9,24 @@ const UserContextProvider = (props) => {
   const [isMember, setIsMember] = useState(false);
   const [loginState, setLoginState] = useState(false);
   const [toBeLogin, setToBeLogin] = useState(true);
-  const [users, setUsers] = useState([
-    {
-      email: "admin@gmail.com",
-      password: "1234"
-    }
-  ])
   const [currentUser, setCurrentUser] = useState({});
-  const [favorites, setFavorites] = useState({});
-  const [addedToFavorites, setAddedToFavorites] = useState({});
 
 
-  const addToRegistration = (e, email, password) => {
+  const [users, setUsers] = useState({});
+
+  const login = async () => {
+    let users = await fetch("/api/v1/users");
+    users = await users.json();
+    setUsers(users);
+  };
+
+
+  const addToRegistration = (e, userName, email, password) => {
     e.preventDefault()
     const member = {
+      userName,
       email,
-      password
+      password,
     }
     let isAlreadyMember = false
     for (let i = 0; i < users.length; i++) {
@@ -43,18 +45,6 @@ const UserContextProvider = (props) => {
     }
   }
 
-  const addToFavorites = (program) => {
-    if (!program.starred) {
-      setFavorites([...favorites, program])
-      setAddedToFavorites(true)
-        return program
-      }
-    }
-  
-    
-
-
-
 
 
   const values =
@@ -70,9 +60,7 @@ const UserContextProvider = (props) => {
     setIsMember,
     toBeLogin,
     setToBeLogin,
-    addToFavorites,
-    addedToFavorites,
-    setAddedToFavorites
+    login
   }
 
   return (

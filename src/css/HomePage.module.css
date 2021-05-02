@@ -15,8 +15,9 @@ h2 {
 .card {
   display: inline-block;
   width: auto;
-  background: rgba(56, 54, 54, 0.808);
+  background: rgba(58, 59, 59, 0.945);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px 50px;
   color: white;
   font-size: 20px;
   cursor: pointer;
@@ -36,8 +37,9 @@ h2 {
   width: auto;
   display: inline-block;
   color: white;
+  background: rgba(83, 87, 87, 0.945);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  background: rgba(56, 54, 54, 0.808);
+  border-radius: 15px 50px;
   transition: 0.3s;
   margin: 5px;
 }

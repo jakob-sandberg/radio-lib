@@ -20,12 +20,20 @@ const ChannelPage = (props) => {
       addTofavorites(props.program)
     }
 
+    const openInNewTab = (url) => {
+      const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+      if (newWindow) newWindow.opener = null
+    }
+
     const renderPrograms = (props) => {
       return  programs.map((program) => (
         <div 
         className={styles.program}
         key={program.id}>
           <p>{program.name}</p>
+          <p className={styles.link}
+          onClick={() => openInNewTab(program.programurl)}
+          >Lyssna nu</p>
           <button className={styles.star} onClick={handleClick}>
           <AiOutlineStar onClick={() => addTofavorites(props.program)} />
             </button>

@@ -12,8 +12,10 @@ body {
 
 .container {
   display: grid;
-  background: skyblue;
-  width: auto;
+  background: rgba(58, 59, 59, 0.945);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px 50px;
+  width: 33%;
   margin: 2rem auto;
 }
 
@@ -28,13 +30,22 @@ p {
 .program {
   display: inline-block;
   width: auto;
-  background: rgba(34, 32, 32, 0.808);
+  background: rgba(58, 59, 59, 0.945);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px 50px;
   color: white;
   font-size: 15px;
-  cursor: pointer;
   margin: 2rem auto;
   padding: 0.5rem;
   transition: 0.3s;
   margin: 5px;
+}
+
+.link {
+  margin-top: -25px;
+  cursor: pointer;
+}
+
+.star {
+  margin-top: -50px;
 }

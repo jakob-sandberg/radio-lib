@@ -7,6 +7,7 @@ const Register = () => {
   const { addToRegistration, isMember, setIsMember } = useContext(UserContext)
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("")
   const [isValid, setIsValid] = useState(false)
   const [inputDefault, setInputDefault] = useState(true)
@@ -29,6 +30,10 @@ const Register = () => {
     }
   }, [password, confirmPassword])
 
+  const userNameChange = (e) => {
+    setUserName(e.target.value)
+  }
+
   const emailChange = (e) => {
     setEmail(e.target.value)
   }
@@ -43,7 +48,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     if (isValid) {
-      addToRegistration(e, email, password)
+      addToRegistration(e,userName, email, password)
     }
     else {
       e.preventDefault();
@@ -54,23 +59,39 @@ const Register = () => {
     <div className={styles.registerContainer}>
       <h1 className="text-center">Become a Member</h1>
       <Form onSubmit={handleSubmit}>
+
         <Alert variant={"danger"} className={`${styles.errorBox} ${isMember ? styles.active : styles.inactive}`}>This email already exist.</Alert>
+
+        <Form.Group controlId="formBasicUser">
+          <Form.Label>Username</Form.Label>
+          <br />
+          <Form.Control onChange={userNameChange} type="username" placeholder="Enter Username" required />
+        </Form.Group>
+
+
+
+
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <br />
           <Form.Control onChange={emailChange} type="email" placeholder="Enter email" required />
         </Form.Group>
+
+        
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Create a password</Form.Label>
           <br />
           <Form.Control onChange={passwordChange} type="password" name="password" placeholder="Please enter more than 4 characters" minlength="4" required />
         </Form.Group>
-        <Form.Group controlId="formConfirmPassword">
 
+
+        <Form.Group controlId="formConfirmPassword">
           <Form.Label>Confirm the password</Form.Label>
           <br />
           <Form.Control className={inputDefault ? "" : isValid ? "is-valid" : "is-invalid"} onChange={checkPassword} type="password" name="confirm" placeholder="Confirm Password" required />
         </Form.Group>
+
+
         <Container className="text-center">
           <Button className={styles.singInButton} variant="primary" type="submit">
             Submit

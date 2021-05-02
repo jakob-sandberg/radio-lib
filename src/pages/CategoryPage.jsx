@@ -24,11 +24,18 @@ const CategoryPage = (props) => {
     const renderCategoryPrograms = (props) => {
   
       return  categoryPrograms.map((categoryProgram) => (
-        <div 
-        onClick={() => openInNewTab(categoryProgram.programurl)}
-        className={styles.program}
-        key={categoryProgram.id}>
-          <p>{categoryProgram.name}</p> 
+        <div className={styles.container}>
+        <div className={styles.categoryProgram} key={categoryProgram.id}>
+
+         <div className={styles.desc}>
+           <h4>{categoryProgram.name}</h4>
+           <span className={styles.hoverText}>{categoryProgram.description}</span>
+           </div>  
+
+          <p className={styles.link} 
+          onClick={() => openInNewTab(categoryProgram.programurl)}
+          >Lyssna nu!</p>
+        </div>
         </div>
         
       ));
@@ -38,7 +45,6 @@ const CategoryPage = (props) => {
           <div className={styles.channelPage}>
             <div className={styles.container}>
             <h2>Välkommen till {location.state.category.name}</h2>
-            <p>{location.state.category.id}</p>
             </div>
            </div> 
         )
