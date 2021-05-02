@@ -3,6 +3,12 @@ body{
   background-size: cover;
 }
 
+
+h1 {
+  margin: 1rem auto;
+  color: white;
+}
+
 .container {
   width: 33%;
   margin: 10rem auto;
@@ -12,14 +18,12 @@ body{
   border-radius: 15px 50px;
 }
 
-h1 {
-  margin: 1rem auto;
-  color: white;
-}
-
-
 .changeInfo {
   margin-left: 10px;
-  width: 50%;
+  width: auto;
   background: coral;
+}
+
+.delete{
+  cursor: pointer;
 }

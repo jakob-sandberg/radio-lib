@@ -5,7 +5,7 @@ import { Alert, Container, Form, Button } from "react-bootstrap"
 import styles from "../css/register.module.css"
 
 const Register = () => {
-  const { register , setLoginState} = useContext(UserContext)
+  const { register, setLoginState } = useContext(UserContext)
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -67,8 +67,18 @@ const Register = () => {
   return (
     <div className={styles.registerContainer}>
       <h1 className="text-center">Become a Member</h1>
-      <Form onSubmit={handleSubmit}>
-
+      <Form
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}
+      >
+        <p
+          className={`${styles.errorBox} ${error ? styles.active : styles.inactive
+            }`}
+        >
+          {" "}
+          {error}
+        </p>
         <Form.Group controlId="formBasicUser">
           <Form.Label>Username</Form.Label>
           <br />
@@ -84,7 +94,7 @@ const Register = () => {
           <Form.Control onChange={emailChange} type="email" placeholder="Enter email" required />
         </Form.Group>
 
-        
+
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Create a password</Form.Label>
           <br />

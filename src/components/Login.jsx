@@ -35,6 +35,7 @@ const Login = () => {
     let result = await login(userInfo);
     if (result.success) {
       console.log("result.success: ", result.success);
+      setLoginState(true)
       history.push("/");
     } else {
       setError(result.error);

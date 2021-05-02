@@ -9,18 +9,18 @@
     margin: 1rem auto;
   }
 
-
-.errorBox {
-  display: none;
-}
-
-.errorBox.active {
-  display: block;
-}
-
-.errorBox.inactive {
-  display: none
-}
+  .errorBox {
+    display: none;
+  }
+  
+  .errorBox.active {
+    display: block;
+    color: red;
+  }
+  
+  .errorBox.inactive {
+    display: none;
+  }
 
 .singInButton {
   margin-top:2rem;

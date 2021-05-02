@@ -14,24 +14,25 @@ const login = (req, res) => {
     let query = /*sql*/ `SELECT * FROM users WHERE email = $email`;
 
     let params = { $email: req.body.email};
-    
+
     db.get(query, params, (err, userInDB) => {
       if(!userInDB) {
         res.status(401).json({error: "Wrong Password/Email or this user doesent exists :( "});
         return;
       }
+      
       req.body.password = Encrypt.encrypt( req.body.password);
       if(userInDB.password ===  req.body.password) {
         delete userInDB.password;
         req.session.user = userInDB;
-        res.json({succes: "You're logged in", loggedInUser: userInDB});
+        res.json({success: "You're logged in", loggedInUser: userInDB});
       } else {
         res.status(401).json({error: "Wrong Password/Email"});
         return;
       }
     });
 };
-
+ 
 const logOut = (req, res) => {
   delete req.session.user;
   res.json({ success: "You're logged out" })

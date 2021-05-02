@@ -14,7 +14,6 @@ const App = () => {
         <BrowserRouter>
         <UserContextProvider>
         <ChannelContextProvider>
-        
           <Navbar />
           <Route exact path="/" component={HomePage} />
           <Route exact path="/log-in" component={LoginPage} />

@@ -7,6 +7,7 @@ const UserContextProvider = (props) => {
   const [user, setUser] = useState(null);
   const [toBeLogin, setToBeLogin] = useState(true);
   const [loginState, setLoginState] = useState(false);
+  const [ userToDelete, setUserToDelte] = useState(null);
 
   const getUser = async () =>{
     let user = await fetch("/api/v1/users/whoami")
@@ -46,7 +47,25 @@ const UserContextProvider = (props) => {
     return result;
   }
 
-  
+  const deleteUserById = async (e, userId) => {
+    e.stopPropagation();
+    let result = await fetch(`/api/v1/users/:id`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    result = await result.json();
+    setUserToDelte(
+      userToDelete.filter((u) => userId !== u.userId)
+    );
+    if (result.success) {
+      console.log(result.success);
+    } else {
+      console.log(result.error);
+    }
+  };
+
 
  
   const values =
@@ -60,7 +79,8 @@ const UserContextProvider = (props) => {
     setToBeLogin,
     toBeLogin,
     setLoginState,
-    loginState
+    loginState,
+    deleteUserById
     
   }
 

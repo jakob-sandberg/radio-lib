@@ -29,3 +29,16 @@ h1 {
     text-align: center;
     text-decoration: underline;
 }
+
+.errorBox {
+  display: none;
+}
+
+.errorBox.active {
+  display: block;
+  color: red;
+}
+
+.errorBox.inactive {
+  display: none;
+}
