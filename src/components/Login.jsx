@@ -5,15 +5,16 @@ import styles from "../css/LoginPage.module.css";
 import { Container, Form, Button, Col, Row } from "react-bootstrap";
 
 const Login = () => {
-  const { login } = useContext(UserContext); 
+  const { login, setToBeLogin } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
   const [error, setError] = useState(null);
   const history = useHistory();
 
 
   const handleUsernameChange = (e) => {
-    setEmail(e.target.value);
+    setUserName(e.target.value);
   };
 
 
@@ -27,19 +28,19 @@ const Login = () => {
   const submitLogin = async (e) => {
     e.preventDefault();
     let userInfo = {
+      userName,
       email,
       password,
     };
-    
+
     let result = await login(userInfo);
     if (result.success) {
-      console.log(result.success);
+      setToBeLogin(true);
       history.push("/");
     } else {
       setError(result.error);
     }
   };
-
 
   return (
     <div className={styles.formContainer}>

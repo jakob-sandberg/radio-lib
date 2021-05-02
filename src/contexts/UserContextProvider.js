@@ -5,8 +5,6 @@ export const UserContext = createContext();
 const UserContextProvider = (props) => {
 
   const [user, setUser] = useState(null);
-  const [isMember, setIsMember] = useState(false);
-  const [showLogin, setShowLogin] =useState(true);
   const [toBeLogin, setToBeLogin] = useState(true);
 
   const getUser = async () =>{
@@ -28,7 +26,6 @@ const UserContextProvider = (props) => {
       console.log(result)
       getUser()
       return result
-
   }
    
   const logout = async ()=>{
@@ -60,11 +57,8 @@ const UserContextProvider = (props) => {
     login,
     logout,
     register,
-    showLogin,
-    setShowLogin,
     setToBeLogin,
     toBeLogin,
-    setIsMember
     
     
   }

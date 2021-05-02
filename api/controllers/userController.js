@@ -10,8 +10,11 @@ const whoami = (req,res) => {
 }
 
 const login = (req, res) => {
+
     let query = /*sql*/ `SELECT * FROM users WHERE email = $email`;
+
     let params = { $email: req.body.email};
+    
     db.get(query, params, (err, userInDB) => {
       if(!userInDB) {
         res.status(401).json({error: "Wrong Password/Email or this user doesent exists :( "});
@@ -22,7 +25,6 @@ const login = (req, res) => {
         delete userInDB.password;
         req.session.user = userInDB;
         res.json({succes: "You're logged in", loggedInUser: userInDB});
-        return;
       } else {
         res.status(401).json({error: "Wrong Password/Email"});
         return;

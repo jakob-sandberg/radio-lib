@@ -2,16 +2,13 @@ import { useContext } from "react"
 import { UserContext } from "../contexts/UserContextProvider"
 
 export default function LogOutButton() {
-    const { setLoginState, setCurrentUser, setToBeLogin } = useContext(UserContext);
+    const { setLoginState, setCurrentUser, setToBeLogin, logout } = useContext(UserContext);
 
-    const logout = () => {
-        setLoginState(false)
-        setCurrentUser({})
-        setToBeLogin(true)
-        };
-    
+    const handleOnclickLogout = async () => {
+        await logout();
+      };
 
     return (
-        <span onClick={logout}>Logout</span>
+        <span onClick={handleOnclickLogout}>Logout</span>
     )
 }

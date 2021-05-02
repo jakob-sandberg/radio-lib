@@ -1,10 +1,11 @@
 import { useState, useContext, useEffect } from 'react'
+import { useHistory } from "react-router-dom";
 import { UserContext } from '../contexts/UserContextProvider'
 import { Alert, Container, Form, Button } from "react-bootstrap"
 import styles from "../css/register.module.css"
 
 const Register = () => {
-  const { register, isMember, setIsMember, setToBeLogin } = useContext(UserContext)
+  const { register , setToBeLogin } = useContext(UserContext)
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -12,10 +13,7 @@ const Register = () => {
   const [isValid, setIsValid] = useState(false)
   const [inputDefault, setInputDefault] = useState(true)
   const [error, setError] = useState(null);
-
-  useEffect(() => {
-    setIsMember(false)
-  }, [])
+  const history = useHistory();
 
   useEffect(() => {
     if (confirmPassword === "") {
@@ -58,6 +56,7 @@ const Register = () => {
       let result = await register(userInfo);
       if (result.success) {
         setToBeLogin(true);
+        history.push("/");
       } else {
         setError(result.error);
       }
@@ -69,8 +68,6 @@ const Register = () => {
     <div className={styles.registerContainer}>
       <h1 className="text-center">Become a Member</h1>
       <Form onSubmit={handleSubmit}>
-
-        <Alert variant={"danger"} className={`${styles.errorBox} ${isMember ? styles.active : styles.inactive}`}>This email already exist.</Alert>
 
         <Form.Group controlId="formBasicUser">
           <Form.Label>Username</Form.Label>
