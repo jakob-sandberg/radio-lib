@@ -50,38 +50,35 @@ const Login = () => {
         submitLogin(e);
       }}  >
 
-        <p
-          className={`${styles.errorBox} ${error ? styles.active : styles.inactive
+        <p className={`${styles.errorBox} ${error ? styles.active : styles.inactive
             }`}
         >
           {error}
         </p>
 
         <Form.Group as={Row} controlId="formHorizontalUsername">
-          <Form.Label column sm={2}>
-            Username
-    </Form.Label>
-          <Col sm={10}>
+          <Form.Label column sm={2}> Username </Form.Label>
+          <Col>
             <Form.Control onChange={handleUsernameChange} type="usernName" placeholder="Username" />
           </Col>
         </Form.Group>
 
 
-        <Form.Group as={Row} controlId="formHorizontalEmail">
+        <Form.Group as={Row} className={styles.input} controlId="formHorizontalEmail">
           <Form.Label column sm={2}>
             Email
     </Form.Label>
-          <Col sm={10}>
+          <Col>
             <Form.Control onChange={handleEmailChange} type="email" placeholder="Email" />
           </Col>
         </Form.Group>
 
-
-        <Form.Group as={Row} controlId="formHorizontalPassword">
+        <Form.Group as={Row} className={styles.input}  controlId="formHorizontalPassword">
           <Form.Label column sm={2}>
             Password
     </Form.Label>
-          <Col sm={10}>
+
+          <Col>
             <Form.Control onChange={handlePasswordChange} type="password" placeholder="Password" />
           </Col>
         </Form.Group>

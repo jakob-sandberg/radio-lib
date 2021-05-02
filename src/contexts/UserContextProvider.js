@@ -49,16 +49,13 @@ const UserContextProvider = (props) => {
 
   const deleteUserById = async (e, userId) => {
     e.stopPropagation();
-    let result = await fetch(`/api/v1/users/:id`, {
+    let result = await fetch('/api/v1/users/' + userId, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
       },
     });
     result = await result.json();
-    setUserToDelte(
-      userToDelete.filter((u) => userId !== u.userId)
-    );
     if (result.success) {
       console.log(result.success);
     } else {
@@ -67,7 +64,6 @@ const UserContextProvider = (props) => {
   };
 
 
- 
   const values =
   {
     setUser,

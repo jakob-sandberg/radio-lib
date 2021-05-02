@@ -3,10 +3,12 @@ body {
 }
 
 .loginContainer {
+  color: white;
   margin: 3rem auto;
   width: 33%;
   display: grid;
-  background-color: bisque;
+  background: rgba(58, 59, 59, 0.945);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 15px 50px;
 }
 
@@ -18,6 +20,9 @@ h1 {
   margin: 2rem auto;
 }
 
+.input {
+ margin: 10px;
+}
 
 .formContainer {
   display: grid;
@@ -25,6 +30,7 @@ h1 {
 }
 
 .changeRegLog {
+  color: white;
   cursor: pointer;
     text-align: center;
     text-decoration: underline;
@@ -41,4 +47,19 @@ h1 {
 
 .errorBox.inactive {
   display: none;
+}
+
+button {
+  background-color: grey; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }

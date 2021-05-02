@@ -1,4 +1,4 @@
-import {React, useState, useContext} from 'react';
+import {React, useContext} from 'react';
 import styles from "../css/ProfilePage.module.css"
 import { UserContext } from '../contexts/UserContextProvider'
 

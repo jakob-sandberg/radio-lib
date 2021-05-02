@@ -12,16 +12,16 @@ h1 {
 .container {
   width: 33%;
   margin: 10rem auto;
-  background: rgba(169, 169, 169, 0.582);
+  background: rgba(99, 97, 97, 0.582);
   padding: 20px;
   display: flex;
+  color: white;
   border-radius: 15px 50px;
 }
 
 .changeInfo {
   margin-left: 10px;
-  width: auto;
-  background: coral;
+  width: 100%;
 }
 
 .delete{
