@@ -8,7 +8,7 @@ export default function ProfilePage() {
   
   return (
     <div>
-      <h1>ProfilePage</h1>
+      <h1>Min Profil</h1>
     <div className={styles.container}>
      <div className={styles.changeInfo}><ChangeInfo />
      </div>

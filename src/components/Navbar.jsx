@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom"
 
 const Navbar = () => {
 
-  const { user, logout, loginState, setLoginState } = useContext(UserContext);
+  const { logout, loginState, setLoginState } = useContext(UserContext);
 
   const handleOnclickLogout = async () => {
     setLoginState(false)
@@ -13,24 +13,16 @@ const Navbar = () => {
   };
 
   return <div className={styles.navbar}>
-    <NavLink className={styles.link} to="/">Home</NavLink>
+    <NavLink className={styles.link} to="/">Start</NavLink>
     {loginState ?
-    <NavLink className={styles.link} to="/profile-page">Profile Page</NavLink>
-    : ""}
+      <NavLink className={styles.link} to="/profile-page">Min Profil</NavLink>
+      : ""}
     {loginState ? (
-            <NavLink
-              to="/"
-              onClick={() => {
-                handleOnclickLogout();
-              }}
-              className={styles.link}>
-              Logga ut
-            </NavLink>
-          ) : (
-            <NavLink className={styles.link} to="/log-in">
-              Logga in
-            </NavLink>
-          )}
+      <NavLink to="/" onClick={() => { handleOnclickLogout(); }}
+        className={styles.link}>Logga ut</NavLink>
+    ) : (
+      <NavLink className={styles.link} to="/log-in">Logga in</NavLink>
+    )}
   </div>;
 };
 

@@ -16,6 +16,7 @@ const UserContextProvider = (props) => {
     return
   }
 
+
   const login = async (userInfo)=>{
       let result = await fetch("/api/v1/users/login",{
         method: "POST",
@@ -33,7 +34,7 @@ const UserContextProvider = (props) => {
     await fetch("/api/v1/users/logout")
      getUser()
   }
-
+ 
   const register = async(newUser)=>{
     let result = await fetch("/api/v1/users/register", {
       method: "POST",
@@ -47,8 +48,7 @@ const UserContextProvider = (props) => {
     return result;
   }
 
-  const deleteUserById = async (e, userId) => {
-    e.stopPropagation();
+  const deleteUserById = async (userId) => {
     let result = await fetch('/api/v1/users/' + userId, {
       method: "DELETE",
       headers: {
@@ -56,11 +56,7 @@ const UserContextProvider = (props) => {
       },
     });
     result = await result.json();
-    if (result.success) {
-      console.log(result.success);
-    } else {
-      console.log(result.error);
-    }
+    return result;
   };
 
 

@@ -20,7 +20,7 @@ const login = (req, res) => {
         res.status(401).json({error: "Wrong Password/Email or this user doesent exists :( "});
         return;
       }
-      
+
       req.body.password = Encrypt.encrypt( req.body.password);
       if(userInDB.password ===  req.body.password) {
         delete userInDB.password;
@@ -68,7 +68,6 @@ const register = (req, res) => {
   });
 };
 
-
 const deleteUserById = async (req, res) => {
   let user = await db.get(/*sql*/ ` SELECT * FROM users WHERE id = $id`, {
     $id: req.params.id,
@@ -87,5 +86,6 @@ const deleteUserById = async (req, res) => {
   console.log("results: ", result);
   res.send("You're no longer an member");
 };
+
 
 module.exports = { whoami, login, logOut, register, deleteUserById };

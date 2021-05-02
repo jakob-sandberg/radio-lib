@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
     <div className={styles.formContainer}>
-      <h1 className="text-center">Login</h1>
+      <h1 className="text-center">Logga in</h1>
       <form onSubmit={(e) => {
         submitLogin(e);
       }}  >
@@ -57,9 +57,9 @@ const Login = () => {
         </p>
 
         <Form.Group as={Row} controlId="formHorizontalUsername">
-          <Form.Label column sm={2}> Username </Form.Label>
+          <Form.Label column sm={2}> Användarnamn </Form.Label>
           <Col>
-            <Form.Control onChange={handleUsernameChange} type="usernName" placeholder="Username" />
+            <Form.Control onChange={handleUsernameChange} type="usernName" placeholder="Användarnamn" />
           </Col>
         </Form.Group>
 
@@ -75,17 +75,17 @@ const Login = () => {
 
         <Form.Group as={Row} className={styles.input}  controlId="formHorizontalPassword">
           <Form.Label column sm={2}>
-            Password
+          Lösenord
     </Form.Label>
 
           <Col>
-            <Form.Control onChange={handlePasswordChange} type="password" placeholder="Password" />
+            <Form.Control onChange={handlePasswordChange} type="password" placeholder="Lösenord" />
           </Col>
         </Form.Group>
 
         <Container className="text-center">
           <Button variant="primary" type="submit">
-            SIGN IN
+            Logga in
             </Button>
         </Container>
       </form>

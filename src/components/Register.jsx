@@ -1,8 +1,8 @@
 import { useState, useContext, useEffect } from 'react'
 import { useHistory } from "react-router-dom";
 import { UserContext } from '../contexts/UserContextProvider'
-import { Alert, Container, Form, Button } from "react-bootstrap"
-import styles from "../css/register.module.css"
+import { Container, Form, Button } from "react-bootstrap"
+import styles from "../css/LoginPage.module.css"
 
 const Register = () => {
   const { register, setLoginState } = useContext(UserContext)
@@ -66,7 +66,7 @@ const Register = () => {
   };
   return (
     <div className={styles.registerContainer}>
-      <h1 className="text-center">Become a Member</h1>
+      <h1 className="text-center">Bli en medlem</h1>
       <Form
         onSubmit={(e) => {
           handleSubmit(e);
@@ -79,33 +79,30 @@ const Register = () => {
           {" "}
           {error}
         </p>
-        <Form.Group controlId="formBasicUser">
-          <Form.Label>Username</Form.Label>
+        <Form.Group className={styles.input}   controlId="formBasicUser">
+          <Form.Label>Användarnamn</Form.Label>
           <br />
-          <Form.Control onChange={userNameChange} type="username" placeholder="Enter Username" required />
+          <Form.Control onChange={userNameChange} type="username" placeholder=" Användarnamn" required />
+        </Form.Group>
+
+        <Form.Group className={styles.input}   controlId="formBasicEmail">
+          <Form.Label>Email</Form.Label>
+          <br />
+          <Form.Control onChange={emailChange} type="email" placeholder="Email" required />
         </Form.Group>
 
 
-
-
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+        <Form.Group className={styles.input}   controlId="formBasicPassword">
+          <Form.Label>Lösenord</Form.Label>
           <br />
-          <Form.Control onChange={emailChange} type="email" placeholder="Enter email" required />
-        </Form.Group>
-
-
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Create a password</Form.Label>
-          <br />
-          <Form.Control onChange={passwordChange} type="password" name="password" placeholder="Please enter more than 4 characters" minLength="4" required />
+          <Form.Control onChange={passwordChange} type="password" name="password" placeholder="Minst 4st bokstäver/siffror" minLength="4" required />
         </Form.Group>
 
 
         <Form.Group controlId="formConfirmPassword">
-          <Form.Label>Confirm the password</Form.Label>
+          <Form.Label>Bekräfta Lösenord</Form.Label>
           <br />
-          <Form.Control className={inputDefault ? "" : isValid ? "is-valid" : "is-invalid"} onChange={checkPassword} type="password" name="confirm" placeholder="Confirm Password" required />
+          <Form.Control className={inputDefault ? "" : isValid ? "is-valid" : "is-invalid"} onChange={checkPassword} type="password" name="confirm" placeholder="Bekräfta Lösenord" required />
         </Form.Group>
 
 
