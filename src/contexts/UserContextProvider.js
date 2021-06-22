@@ -30,7 +30,7 @@ const UserContextProvider = (props) => {
       return result
   }
    
-  const logout = async ()=>{
+  const logout = async () => {
     await fetch("/api/v1/users/logout")
      getUser()
   }

@@ -9,7 +9,6 @@ const ChangeInfo = () => {
   const { deleteUserById, user } = useContext(UserContext);
 
   const handleRemoveClick = (e, userId) => {
-  
     e.stopPropagation();
     deleteUserById(userId);
     console.log("userId :", userId);
@@ -21,7 +20,7 @@ const ChangeInfo = () => {
   
     <div className={styles.delete}>
       <TiDelete size={35} 
-      onClick={(e) => handleRemoveClick(e, user.userId)}/></div>
+      onClick={(e) => handleRemoveClick(e, user.id)}/></div>
     </div>
   )
 }
