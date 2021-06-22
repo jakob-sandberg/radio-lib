@@ -115,3 +115,9 @@ p {
   font-size: 40px;
   cursor: pointer;
 }
+
+.heart {
+  display: flex;
+  margin: auto auto;
+  color: red;
+}

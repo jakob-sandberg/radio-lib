@@ -19,3 +19,8 @@
     padding: 0 15px;
   }
 }
+
+.tocenter {
+  display: grid;
+  justify-content: center;
+}

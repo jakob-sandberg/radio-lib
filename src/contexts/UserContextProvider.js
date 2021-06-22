@@ -12,7 +12,7 @@ const UserContextProvider = (props) => {
 
   const [loginResult, setLoginResult] = useState(null);
 
-  const getUser = async () => {
+  const whoami = async () => {
     let user = await fetch("/api/v1/users/whoami");
     user = await user.json();
     if (user) {
@@ -24,17 +24,18 @@ const UserContextProvider = (props) => {
     return user;
   };
 
-  const login = async (loginInfo) => {
+  const login = async (user) => {
     let userLoggingIn = await fetch("/api/v1/users/login", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(loginInfo),
+      body: JSON.stringify(user),
     });
     userLoggingIn = await userLoggingIn.json();
     if (!userLoggingIn.error) {
-      setActiveUser(userLoggingIn);
+      setUser(userLoggingIn);
+      console.log("logged in user: ", user);
       setLoginResult(null);
     } else {
       setLoginResult(userLoggingIn.error);
@@ -76,7 +77,7 @@ const UserContextProvider = (props) => {
   {
     setUser,
     user,
-    getUser,
+    whoami,
     login,
     logout,
     register,

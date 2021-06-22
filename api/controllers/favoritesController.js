@@ -1,13 +1,11 @@
 const sqlite3 = require("sqlite3");
 
-//This model allows us to make front end fetches from my backend
 const fetch = require("node-fetch");
 
 const path = require("path");
 const db = new sqlite3.Database(path.join(__dirname, "../radioLibDB.db"));
 
-//User story 9: able to see favorite channel
-const saveFavChannel = (req, res) => {
+const saveLikedChannel = (req, res) => {
   let favChannel = req.body;
   let query = /*sql*/ `
   INSERT INTO likedChannel(channelId, userId)
@@ -26,8 +24,7 @@ const saveFavChannel = (req, res) => {
   });
 };
 
-//User story 9: able to see favorite program
-const saveFavProgram = (req, res) => {
+const saveLikedProgram = (req, res) => {
   // console.log(req.body);
   let { programId } = req.body;
   let query = /*sql*/ `
@@ -47,16 +44,12 @@ const saveFavProgram = (req, res) => {
   });
 };
 
-//User story 10: able to see a tablå/schedule of my fav channels
 const getFavChannel = (req, res) => {
   // console.log(req.params);
   let query = /*sql*/ `
   SELECT * FROM likedChannel WHERE userId = $userId
   `;
   let params = { $userId: req.session.user.userId };
-  //get() gets the first match in the DB.
-  //all() gets all
-  //must use get all to get all the channels
   db.all(query, params, (err, favChannel) => {
     if (!favChannel) {
       res.status(400).json({ error: "Something went wrong" });
@@ -66,8 +59,6 @@ const getFavChannel = (req, res) => {
   });
 };
 
-//able to see a tablå/schedule of my fav programs
-//not state as user story 10... but... doing it anyway
 const getFavProgram = (req, res) => {
   // console.log(req.params);
   let query = /*sql*/ `
@@ -83,7 +74,6 @@ const getFavProgram = (req, res) => {
   });
 };
 
-// DELETE from db
 const deleteFavChannel = (req, res) => {
   const { channelId, userId } = req.params; 
   // console.log(userId);
@@ -109,8 +99,8 @@ const deleteFavProgram = (req, res) => {
 }
 
 module.exports = {
-  saveFavChannel,
-  saveFavProgram,
+  saveLikedChannel,
+  saveLikedProgram,
   getFavChannel,
   getFavProgram,
   deleteFavChannel,

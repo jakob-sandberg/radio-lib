@@ -8,13 +8,10 @@ import { useContext } from "react";
 export default function ProfilePage() {
 
 
-  const { activeUser } = useContext(UserContext);
-  
-  
-  
+  const { user, whoami } = useContext(UserContext);
   return (
     <div>
-      <h1>Hej {activeUser.userName}</h1>
+      <h1>Hej {user.loggedInUser.userName}</h1>
     <div className={styles.container}>
      <div className={styles.changeInfo}><ChangeInfo />
      </div>

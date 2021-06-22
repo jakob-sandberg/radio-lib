@@ -24,7 +24,7 @@ const ChannelSchedule = (props) => {
   return (
     <div className="channelschedule">
       <div className={styles.tocenter}>
-      <h2 className={styles.header}>Schedule By Day</h2>
+      <h2 className={styles.header}>Tablå för varje dag</h2>
       <DatePicker
         className={styles.input}
         dateFormat="yyyy-MM-dd"

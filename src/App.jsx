@@ -2,6 +2,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import ChannelContextProvider from "./contexts/ChannelProvider"
 import Navbar from "./components/Navbar";
 import UserContextProvider from "./contexts/UserContextProvider";
+import FavoritesContextProvider from "./contexts/FavoritesContext";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ChannelPage from "./pages/ChannelPage";
@@ -15,6 +16,7 @@ const App = () => {
     <div className="App">
         <BrowserRouter>
         <UserContextProvider>
+        <FavoritesContextProvider>
         <ChannelContextProvider>
           <Navbar />
           <Route exact path="/" component={HomePage} />
@@ -24,6 +26,7 @@ const App = () => {
           <Route exact path="/profile-page" component={ProfilePage} />
           <Route exact path="/favorites" component={Favorites} />
           </ChannelContextProvider>
+          </FavoritesContextProvider>
           </UserContextProvider>
         </BrowserRouter>
     </div>

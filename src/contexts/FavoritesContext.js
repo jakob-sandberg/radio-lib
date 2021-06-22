@@ -6,8 +6,8 @@ const FavoritesContextProvider = (props) => {
   const [userFavProgram, setUserFavProgram] = useState(null);
 
   // Functionality for favorites //
-  const storeFavChannel = async (favToSave) => {
-    let fav = await fetch("/api/v1/favorites/savefavchannel", {
+  const saveLikedChannel = async (favToSave) => {
+    let fav = await fetch("/api/v1/favorites/savelikedchannel", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -18,8 +18,8 @@ const FavoritesContextProvider = (props) => {
     console.log(fav);
   };
 
-  const storeFavProgram = async (favToSave) => {
-    let fav = await fetch("/api/v1/favorites/savefavprogram", {
+  const saveLikedProgram = async (favToSave) => {
+    let fav = await fetch("/api/v1/favorites/savelikedprogram", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -65,8 +65,8 @@ const FavoritesContextProvider = (props) => {
   };
 
   const values = {
-    storeFavChannel,
-    storeFavProgram,
+    saveLikedChannel,
+    saveLikedProgram,
     getUserFavChannel,
     userFavProgram,
     getUserFavProgram,
