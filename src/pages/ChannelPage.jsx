@@ -23,7 +23,12 @@ const ChannelPage = (props) => {
         <div 
         className={styles.program}
         key={program.id}>
-          <p>{program.name}</p>
+         
+          <p>{program.name}</p> 
+          <div className={styles.desc}>
+          <p>[info]</p>
+          <p className={styles.hoverText}>{program.description}</p>
+          </div>
           <p className={styles.link}
           onClick={() => openInNewTab(program.programurl)}
           >Lyssna nu</p>

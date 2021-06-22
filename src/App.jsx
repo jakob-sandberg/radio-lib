@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import ChannelPage from "./pages/ChannelPage";
 import ProfilePage from "./pages/ProfilePage";
 import CategoryPage from "./pages/CategoryPage";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (

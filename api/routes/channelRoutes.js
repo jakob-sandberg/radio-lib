@@ -8,7 +8,7 @@ router.get("", channelController.getAllChannels);
 router.get("/programcategories", channelController.getAllProgramCategories);
 router.get("/programs/:id", channelController.getProgramByChannelId);
 router.get("/category/:id", channelController.getProgramsByCategoryId);
-router.get("/schedule/:channelId", channelController.getChannelSchedule);
+router.get("/schedule/:channelId", channelController.getChannelSchedule)
 
 
 

@@ -73,6 +73,10 @@ const ChannelContextProvider = (props) => {
     setSelectedCategory(categoryId);
   }
 
+
+
+
+
 const values = {
   channels,
   programCategories,
