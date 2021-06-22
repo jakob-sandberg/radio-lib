@@ -1,0 +1,15 @@
+.favoriter {
+  display: flex;
+  justify-content: center;
+}
+
+.favChannels {
+  background: aquamarine;
+  font-size: 50px;
+  color: black;
+}
+.favPrograms {
+  background: darkkhaki;
+  font-size: 50px;
+  color: black;
+}

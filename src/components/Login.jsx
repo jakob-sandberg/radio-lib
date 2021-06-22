@@ -26,13 +26,13 @@ const Login = () => {
   };
   const submitLogin = async (e) => {
     e.preventDefault();
-    let userInfo = {
+    let loginInfo = {
       userName,
       email,
       password,
     };
 
-    let result = await login(userInfo);
+    let result = await login(loginInfo);
     if (result.success) {
       console.log("result.success: ", result.success);
       setLoginState(true)

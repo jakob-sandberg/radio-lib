@@ -36,32 +36,31 @@ const getProgramsByCategoryId = async (req, res) => {
   res.json(categoryPrograms);
 }
 
-const getChannelSchedule = async (req, res) => {
-  let channelSchedule = await fetch(
-    `http://api.sr.se/api/v2/scheduledepisodes?${json}&${paginationFalse}&channelId=${req.params.channelId}&date=${req.query.date}`
-  );
-  channelSchedule = await channelSchedule.json();
 
-  channelSchedule.schedule = channelSchedule.schedule.map((p) => {
+
+const getScheduleByDate = async (req, res) => {
+  let schedules = await fetch(`
+  http://api.sr.se/api/v2/scheduledepisodes?${json}&${paginationFalse}&channelId=${req.params.channelId}&date=${req.query.date}
+  `); 
+  schedules = await schedules.json(); 
+
+  schedules.schedule = schedules.schedule.map(p => {
     return {
-      ...p,
+      ...p, 
       starttimeutc: utils.convertToDateObject(p.starttimeutc),
       endtimeutc: utils.convertToDateObject(p.endtimeutc),
-    };
-  });
-
-  res.json(channelSchedule.schedule);
-};
-
-
+    }
+  })
+  res.json(schedules)
+}
 
 
 module.exports = {
 
   getAllChannels,
-  getChannelSchedule, 
   getAllProgramCategories,
   getProgramByChannelId,
-  getProgramsByCategoryId
+  getProgramsByCategoryId,
+  getScheduleByDate
 
 };

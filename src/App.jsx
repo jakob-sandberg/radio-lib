@@ -8,6 +8,7 @@ import ChannelPage from "./pages/ChannelPage";
 import ProfilePage from "./pages/ProfilePage";
 import CategoryPage from "./pages/CategoryPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Favorites from "./pages/Favorites";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route exact path="/channel/:channelId" component={ChannelPage} />
           <Route exact path="/category/:categoryId" component={CategoryPage} />
           <Route exact path="/profile-page" component={ProfilePage} />
+          <Route exact path="/favorites" component={Favorites} />
           </ChannelContextProvider>
           </UserContextProvider>
         </BrowserRouter>

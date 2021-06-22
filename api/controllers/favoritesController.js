@@ -4,13 +4,13 @@ const sqlite3 = require("sqlite3");
 const fetch = require("node-fetch");
 
 const path = require("path");
-const db = new sqlite3.Database(path.join(__dirname, "../../radio.db"));
+const db = new sqlite3.Database(path.join(__dirname, "../radioLibDB.db"));
 
 //User story 9: able to see favorite channel
 const saveFavChannel = (req, res) => {
   let favChannel = req.body;
   let query = /*sql*/ `
-  INSERT INTO favChannel(channelId, userId)
+  INSERT INTO likedChannel(channelId, userId)
   VALUES ($channelId, $userId)
   `;
   let params = {
@@ -31,7 +31,7 @@ const saveFavProgram = (req, res) => {
   // console.log(req.body);
   let { programId } = req.body;
   let query = /*sql*/ `
-  INSERT INTO favProgram(programId, userId)
+  INSERT INTO likedProgram(programId, userId)
   VALUES ($programId, $userId)
   `;
   let params = {
@@ -51,7 +51,7 @@ const saveFavProgram = (req, res) => {
 const getFavChannel = (req, res) => {
   // console.log(req.params);
   let query = /*sql*/ `
-  SELECT * FROM favChannel WHERE userId = $userId
+  SELECT * FROM likedChannel WHERE userId = $userId
   `;
   let params = { $userId: req.session.user.userId };
   //get() gets the first match in the DB.
@@ -71,7 +71,7 @@ const getFavChannel = (req, res) => {
 const getFavProgram = (req, res) => {
   // console.log(req.params);
   let query = /*sql*/ `
-  SELECT * FROM favProgram WHERE userId = $userId
+  SELECT * FROM likedProgram WHERE userId = $userId
   `;
   let params = { $userId: req.session.user.userId  };
   db.all(query, params, (err, favProgram) => {
@@ -87,7 +87,7 @@ const getFavProgram = (req, res) => {
 const deleteFavChannel = (req, res) => {
   const { channelId, userId } = req.params; 
   // console.log(userId);
-  let query = `DELETE FROM favChannel WHERE channelId = $channelId AND userId = $userId` ; 
+  let query = `DELETE FROM likedChannel WHERE channelId = $channelId AND userId = $userId` ; 
   let params = {
     $channelId: channelId,
     $userId: userId
@@ -99,7 +99,7 @@ const deleteFavChannel = (req, res) => {
 const deleteFavProgram = (req, res) => {
   const { programId, userId } = req.params; 
   // console.log(userId);
-  let query = `DELETE FROM favProgram WHERE programId = $programId AND userId = $userId` ; 
+  let query = `DELETE FROM likedProgram WHERE programId = $programId AND userId = $userId` ; 
   let params = {
     $programId: programId,
     $userId: userId

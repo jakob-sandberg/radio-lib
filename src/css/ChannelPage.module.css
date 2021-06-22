@@ -53,6 +53,8 @@ p {
 .desc {
   position: relative;
   display: inline-block;
+
+  justify-content: center;
 }
 
 .desc .hoverText {
@@ -103,4 +105,13 @@ p {
 .link {
   cursor: pointer;
   margin-top: -20px;
+}
+
+.schema {
+  width: auto;
+  display: flex;
+  margin: auto auto;
+  background: chocolate;
+  font-size: 40px;
+  cursor: pointer;
 }

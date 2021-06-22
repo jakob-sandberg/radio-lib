@@ -5,7 +5,7 @@ import { Container, Form, Button } from "react-bootstrap"
 import styles from "../css/LoginPage.module.css"
 
 const Register = () => {
-  const { register, setLoginState } = useContext(UserContext)
+  const { register, setLoginState, setActiveUser } = useContext(UserContext)
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -47,15 +47,16 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let userInfo = {
+    let newUser = {
       userName,
       email,
       password,
     };
     if (isValid) {
-      let result = await register(userInfo);
+      let result = await register(newUser);
       if (result.success) {
         setLoginState(true)
+        setActiveUser(result)
         history.push("/");
       } else {
         setError(result.error);

@@ -23,6 +23,10 @@ const Navbar = () => {
     ) : (
       <NavLink className={styles.link} to="/log-in">Logga in</NavLink>
     )}
+
+{loginState ?
+      <NavLink className={styles.link} to="/favorites">Favoriter</NavLink>
+      : ""}
   </div>;
 };
 

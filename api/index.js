@@ -4,6 +4,7 @@ const path = require("path");
 
 const channelRoutes = require("./routes/channelRoutes");
 const userRoutes = require("./routes/userRoutes");
+const favoritesRoutes = require("./routes/favoritesRoutes");
 const port = 3001;
 
 // Server setup
@@ -26,6 +27,7 @@ app.use(
 // Routes setup goes underneath here...
 app.use("/api/v1/channels", channelRoutes);
 app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/favorites", favoritesRoutes); 
 
 
 // Starts the server

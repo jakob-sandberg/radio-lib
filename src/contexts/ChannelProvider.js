@@ -9,7 +9,7 @@ const ChannelContextProvider = (props) => {
   const [selectedChannel, setSelectedChannel] = useState(null);
   const [ categoryPrograms, setCategoryPrograms] = useState(null);
   const [ selectedCategory, setSelectedCategory] = useState(null);
-  const [schedule, setSchedule] = useState(null);
+  const [dateSchedules, setDateSchedules] = useState(null);
 
 
   useEffect(() => {
@@ -35,13 +35,7 @@ const ChannelContextProvider = (props) => {
     setChannels(channels.channels);
   };
 
-  const getChannelSchedule = async (channelId, date) => {
-    let fetchedschedule = await fetch(
-      `/api/v1/channels/schedule/${channelId}?date=${date}`
-    );
-    fetchedschedule = await fetchedschedule.json();
-    setSchedule(fetchedschedule);
-  };
+    
 
   const getAllProgramCategories = async () => {
     let programCategories = await fetch ("/api/v1/channels/programcategories")
@@ -73,6 +67,14 @@ const ChannelContextProvider = (props) => {
     setSelectedCategory(categoryId);
   }
 
+  const getScheduleByDate = async (channelId, startDate) => {
+    let schedulesByDate = await fetch(
+      `/api/v1/channels/scheduledate/${channelId}?date=${startDate}`
+    );
+    schedulesByDate = await schedulesByDate.json();
+    // console.log(schedulesByDate.schedule);
+    setDateSchedules(schedulesByDate.schedule);
+  };
 
 
 
@@ -84,8 +86,9 @@ const values = {
   setActiveChannel,
   categoryPrograms,
   setActiveCategory,
-  schedule,
-  getChannelSchedule,
+  dateSchedules, 
+  setDateSchedules,
+  getScheduleByDate
 };
 
 return (
