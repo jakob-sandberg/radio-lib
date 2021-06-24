@@ -24,3 +24,12 @@
   display: grid;
   justify-content: center;
 }
+
+.cardContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+

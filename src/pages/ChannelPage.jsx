@@ -21,13 +21,13 @@ const ChannelPage = (props) => {
   const ChangeToSchedule = () => {
     setShowSchedule(!showSchedule)
   }
+  
 
   useEffect(() => {
     setActiveChannel(location.state.channel.id);
   }, [location]);
 
   const toggleChannelLike = (channelId) => {
-    console.log(channelId);
     if (favorite) {
       setFavorite(!favorite);
       let favToSave = {
@@ -83,7 +83,7 @@ const ChannelPage = (props) => {
       >
         {showSchedule ? "Visa schema för kanalen" : "Tillbaka till alla program"}</p>
       {showSchedule ? 
-      <p><Programs /></p>: <ChannelSchedule />}
+      <p><Programs /></p>: <ChannelSchedule channelId={location.state.channel.id} />}
 
       
 
