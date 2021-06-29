@@ -6,13 +6,13 @@ const path = require("path");
 const db = new sqlite3.Database(path.join(__dirname, "../radioLibDB.db"));
 
 const saveLikedChannel = (req, res) => {
-  let favChannel = req.body;
+  let likedChannel = req.body;
   let query = /*sql*/ `
   INSERT INTO likedChannel(channelId, userId)
   VALUES ($channelId, $userId)
   `;
   let params = {
-    $channelId: favChannel.channelId,
+    $channelId: likedChannel.channelId,
     $userId: req.session.user.userId
   };
   db.run(query, params, function (err) {
@@ -33,7 +33,7 @@ const saveLikedProgram = (req, res) => {
   `;
   let params = {
     $programId: programId,
-    $userId: req.session.user.userId
+    $userId: req.session.user.Id 
   };
   db.run(query, params, function (err) {
     if (err) {

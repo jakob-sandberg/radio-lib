@@ -28,15 +28,16 @@ const ChannelPage = (props) => {
   }, [location]);
 
   const toggleChannelLike = (channelId) => {
-    if (favorite) {
-      setFavorite(!favorite);
+    if (favorite) { 
+      setFavorite(false);
+      deleteFavChannel(channelId, user.userId)
+
+    } else if (!favorite) {
+      setFavorite(true);
       let favToSave = {
         channelId,
       };
       saveLikedChannel(favToSave);
-    } else if (!favorite) {
-      setFavorite(true);
-      deleteFavChannel(channelId, user.userId)
     }
   };
 

@@ -23,7 +23,6 @@ const Programs = (program) => {
   const { id } = program;
 
     const handleProgramLike = (programId) => {
-      // console.log(programId);
       if(!favorite){
         setFavorite(true); 
         let favToSave = {

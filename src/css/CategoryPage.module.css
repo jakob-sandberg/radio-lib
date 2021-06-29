@@ -1,7 +1,7 @@
 body {
   margin-top: -10px;
-  background-image: url("../assets/radio.jpg");
-  background-size: cover;
+  background-color: url("../assets/radio.jpg");
+  background-size: contain;
   text-align: center;
   padding: 10px;
 }

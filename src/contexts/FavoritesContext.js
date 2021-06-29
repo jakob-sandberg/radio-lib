@@ -5,7 +5,7 @@ const FavoritesContextProvider = (props) => {
   const [userFavChannel, setUserFavChannel] = useState(null);
   const [userFavProgram, setUserFavProgram] = useState(null);
 
-  // Functionality for favorites //
+
   const saveLikedChannel = async (favToSave) => {
     let fav = await fetch("/api/v1/favorites/savelikedchannel", {
       method: "POST",
@@ -33,7 +33,6 @@ const FavoritesContextProvider = (props) => {
   const getUserFavChannel = async () => {
     let fav = await fetch(`/api/v1/favorites/getfavchannel`);
     fav = await fav.json();
-    // console.log(userFavChannel);
     setUserFavChannel(fav);
   };
 
@@ -41,7 +40,7 @@ const FavoritesContextProvider = (props) => {
     let fav = await fetch(`/api/v1/favorites/getfavprogram`);
     fav = await fav.json();
     setUserFavProgram(fav);
-    // console.log(userFavProgram);
+    
   };
 
   const deleteFavChannel = async (channelId, userId) => {
