@@ -7,10 +7,12 @@
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
-    "bootstrap": "^4.6.0",
+    "bootstrap": "^5.0.2",
+    "express-session": "^1.17.2",
+    "node-fetch": "^2.6.1",
     "react": "^17.0.2",
     "react-amazing-proxy": "^1.0.63",
-    "react-bootstrap": "^1.6.1",
+    "react-bootstrap": "^2.0.0-beta.4",
     "react-datepicker": "^4.1.1",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
@@ -20,6 +22,7 @@
     "reactstrap": "^8.9.0",
     "redux": "^4.1.0",
     "redux-form": "^8.3.7",
+    "sqlite3": "^5.0.2",
     "web-vitals": "^1.1.1"
   },
   "scripts": {

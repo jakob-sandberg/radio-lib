@@ -1,5 +1,7 @@
 .favoriter {
-  display: flex;
+  background-color: grey;
+  width: 100%;
+  height: auto;
   justify-content: center;
 }
 
@@ -12,4 +14,10 @@
   background: darkkhaki;
   font-size: 50px;
   color: black;
+}
+
+.togglestyle {
+  background-color: aliceblue;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
 }

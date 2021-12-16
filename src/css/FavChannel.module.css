@@ -1,0 +1,14 @@
+.cardContainer {
+  display: flex;
+}
+
+.card {
+  background-color: grey;
+  display: grid;
+  margin: 20px;
+  width: 50%;
+}
+
+.trash {
+  cursor: pointer;
+}

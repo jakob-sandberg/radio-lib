@@ -5,7 +5,6 @@ const FavoritesContextProvider = (props) => {
   const [userFavChannel, setUserFavChannel] = useState(null);
   const [userFavProgram, setUserFavProgram] = useState(null);
 
-
   const saveLikedChannel = async (favToSave) => {
     let fav = await fetch("/api/v1/favorites/savelikedchannel", {
       method: "POST",
@@ -15,7 +14,6 @@ const FavoritesContextProvider = (props) => {
       body: JSON.stringify(favToSave),
     });
     fav = await fav.json();
-    console.log(fav);
   };
 
   const saveLikedProgram = async (favToSave) => {
@@ -27,20 +25,18 @@ const FavoritesContextProvider = (props) => {
       body: JSON.stringify(favToSave),
     });
     fav = await fav.json();
-    console.log(fav);
   };
 
-  const getUserFavChannel = async () => {
-    let fav = await fetch(`/api/v1/favorites/getfavchannel`);
+  const getUserFavChannel = async (userId) => {
+    let fav = await fetch(`/api/v1/favorites/getfavchannel?userId=${userId}`);
     fav = await fav.json();
     setUserFavChannel(fav);
   };
 
-  const getUserFavProgram = async () => {
-    let fav = await fetch(`/api/v1/favorites/getfavprogram`);
+  const getUserFavProgram = async (userId) => {
+    let fav = await fetch(`/api/v1/favorites/getfavprogram?userId=${userId}`);
     fav = await fav.json();
     setUserFavProgram(fav);
-    
   };
 
   const deleteFavChannel = async (channelId, userId) => {
